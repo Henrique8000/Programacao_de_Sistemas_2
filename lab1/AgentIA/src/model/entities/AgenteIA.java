@@ -1,5 +1,33 @@
-public class AgenteIA {
+package model.entities;
 
+import model.exceptions.ErroComunicacaoIAException;
+import model.exceptions.FalhaProcessamentoAgenteException;
+import model.exceptions.PromptInadequadoException;
+
+public abstract class AgenteIA {
+	
+	protected String nome;
+	protected String status;
+	
+	public AgenteIA() {
+		
+	}
+	
+	public AgenteIA(String nome, String status) {
+		this.nome = nome;
+		this.status = status;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+	
+	public void conectarServidor() throws ErroComunicacaoIAException{
+		
+	}
+	
+	public abstract void processarRequisicao(String input) throws FalhaProcessamentoAgenteException, PromptInadequadoException, ErroComunicacaoIAException;
+	
     // Método principal evoluído
     public void processarPrompt(String prompt) throws 
             FalhaProcessamentoAgenteException, 
@@ -32,7 +60,7 @@ public class AgenteIA {
     }
 
     // Método de simulação de API (Exercício 2)
-    private void chamarModeloExterno() throws ErroComunicacaoIAException {
+    protected void chamarModeloExterno() throws ErroComunicacaoIAException {
         if (Math.random() > 0.7) { // 30% de chance de falha
             throw new ErroComunicacaoIAException("Falha na conexão com o cluster de GPUs (Timeout).");
         }
