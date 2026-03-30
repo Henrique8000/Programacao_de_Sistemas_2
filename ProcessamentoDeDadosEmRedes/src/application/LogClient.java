@@ -4,7 +4,7 @@ import java.net.*;
 
 public class LogClient {
     public static void main(String[] args) {
-        String host = "192.168.122.213";
+        String host = "SEU-IPV4";
         int porta = 12345;
 
         try (Socket socket = new Socket(host, porta);
